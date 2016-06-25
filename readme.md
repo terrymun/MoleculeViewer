@@ -2,6 +2,8 @@
 
 A simple but powerful molecule viewer for generating 3D models from simplified molecular-input line-entry system (SMILES) files. Implementation includes the [ChEmbl API](https://www.ebi.ac.uk/chembl/api/data/docs) and [Speck](https://github.com/wwwtyro/speck).
 
+[**View live demo.**](https://terrymun.github.io/MoleculeViewer/)
+
 ## How to use
 
 Create a plain text file containing a single line of <code>SMILES</code>, for example, for ciprofloxacin:
