@@ -1,0 +1,2 @@
+#!/bin/bash
+watchify src/main.js -t brfs -o static/build.js -v

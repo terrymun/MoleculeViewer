@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head itemscope itemtype="http://schema.org/WebSite">
+    <title>Molecule Viewer</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <link rel="stylesheet" href="./static/styles.css" media="screen" />
+
+    <meta name="author" content="Terry Mun">
+    <meta name="description" content="Molecule Viewer">
+    <link rel="canonical" href="https://terrymun.github.io/MoleculeViewer" itemprop="url">
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name" : "Molecule Viewer",
+            "url": "https://terrymun.github.io/MoleculeViewer"
+        }
+    </script>
+</head>
+<body>
+    <header id="header">
+        <h1>Molecule Viewer</h1>
+        <span class="byline">Drag and drop a SMILES formatted file into the container below</span>
+    </header>
+
+    <section>
+        <div class="dropzone" id="smiles-dropzone">
+            <div class="dropzone__message normal"><p>Drag and drop a SMILES formatted file here</p></div>
+            <span class="dropzone__message warning invalid-filetype">Invalid filetype provided</span>
+            <span class="dropzone__message warning invalid-content">Invalid file content, linebreaks detected</span>
+            <span class="dropzone__message warning multi">Please upload a single file</span>
+            <span class="dropzone__message warning none">No file has been dropped</span>
+            <span class="dropzone__message warning size">File exceeded size limit of 100MB</span>
+            <span class="dropzone__message warning aborted">File reading aborted by user</span>
+            <span class="dropzone__message warning custom"></span>
+
+            <label for="smiles-dropzone__file">Choose a file, or drag and drop a file here</label>
+            <input type="file" id="smiles-dropzone__file" name="smiles_file" class="dropzone__input-file" accept="application/x-gzip, application/json" />
+
+            <span class="dropzone__progress"></span>
+        </div>
+
+        <div id="speck">
+            <div id="smiles-data">
+                <label for="smiles-string">SMILES</label><input type="text" id="smiles-string" readonly />
+            </div>
+            <div id="speck-wrapper">
+                <canvas id="speck-canvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>By Terry Mun</p>
+    </footer>
+
+    <script src="./static/build.js" async></script>
+</body>
+</html>

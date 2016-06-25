@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 16px;
+}
+body {
+    background-color: #eee;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5em;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: no-wrap;
+    min-height: 100vh;
+}
+    body > * {
+        padding: 1rem 3rem;
+        width: 100%;
+    }
+
+/* Layout */
+header {
+
+}
+section {
+    flex: 1 1 auto;
+    padding: 0;
+    position: relative;
+}
+footer {
+    background-color: #333;
+    color: #ccc;
+}
+
+/* Headers */
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.5em;
+    text-align: center;
+}
+    h1 + span.byline {
+        display: block;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+/* Drop zone */
+.dropzone {
+    background-color: rgba(0,0,0,.15);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all .25s ease-in-out;
+    height: 100%;
+}
+    .dropzone::before {
+        content: '';
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        bottom: 1rem;
+        right: 1rem;
+        border: 3px dashed rgba(0,0,0,.15);
+        transition: all .25s ease-in-out;
+    }
+        .dropzone.active::before {
+           opacity: 1;
+        }
+
+    .dropzone.dropzone--collapsed {
+        height: 10rem;
+    }
+
+    .dropzone .dropzone__message,
+    .dropzone label {
+        border-radius: 4px;
+        color: rgba(0,0,0,.25);
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 1.5rem 3rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        margin-left: 10%;
+        width: 80%;
+        transition: all .25s ease-in-out;
+    }
+        .dropzone .dropzone__message.warning {
+            background-color: #b13131;
+            color: #eee;
+        }
+        .dropzone .dropzone__message.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 2;
+        }
+
+    .dropzone__progress {
+        background-color: #79BD8F;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+     .dropzone label {
+        opacity: 1;
+        pointer-events: auto;
+        cursor: pointer;
+        display: block;
+        z-index: 1;
+    }  
+        .dropzone.active label {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .dropzone label + input[type='file'] {
+            display: none;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+        }
+
+/* Speck molecules */
+#speck {
+    display: none;
+    margin-top: 10rem;
+    height: 100vh;
+}
+    #speck.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+#smiles-data label {
+    cursor: pointer;
+    font-size: .85rem;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+#smiles-string {
+    background-color: #ccc;
+    border: 0;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+}
+#speck-canvas {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+}
+    #speck-canvas.grabbing {
+        cursor: -webkit-grabbing;
+        cursor: -moz-grabbing;
+        cursor: grabbing;
+    }
