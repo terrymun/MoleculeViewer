@@ -15980,7 +15980,7 @@ var dnd = {
         }
 
         // Check if file type is correct
-        if(!/^text\/.*$/.test(f.type)) {
+        if(!/^(text\/.*|chemical\/x-daylight-smiles)$/.test(f.type)) {
             console.warn('You have provided an invalid filetype.');
             dnd.showMessage.call(t, '.dropzone__message.invalid-filetype', true, function() {
                 $(this).find('p').first().append('<br /><span class="additional-content">You have provided a file with the MIME type: <code>'+f.type+'</code></span>.');
