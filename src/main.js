@@ -1,9 +1,6 @@
 "use strict";
 
-// Require standard plugins
-var fs = require("fs");
-var kb = require("keyboardjs");
-var lz = require("lz-string");
+// Require jQuery
 var $ = require("jquery");
 
 // Require speck-specific plugins
@@ -271,17 +268,6 @@ var smiles = {
 // Molecule view
 var molecule = {
     init: function(xyzData) {
-       // Keyboard events
-       kb.active = function(key) {
-            var keys = kb.activeKeys();
-            for (var i = 0; i < keys.length; i++) {
-                if (key === keys[i]) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         //====================//
         // Adapted from Speck //
         //====================//
@@ -301,7 +287,6 @@ var molecule = {
 
         // Reflow
         var reflow = function() {
-            console.log('reflowing');
             var ww = $w.width(),
                 wh = $w.height();
 
@@ -377,12 +362,10 @@ var molecule = {
             else {
                 wd = -1;
             }
-            
-            // Use mousewheel to zoom
+
             view.zoom = view.zoom * (wd === 1 ? 1/0.9 : 0.9);
             View.resolve(view);
             needReset = true;
-
             e.preventDefault();
         });
 
@@ -401,9 +384,6 @@ var molecule = {
             renderer.setSystem(system, view);
             View.center(view, system);
             needReset = true;
-
-            // Scroll
-            $('html, body').animate({ scrollTop: $('#speck').offset().top });
         }
         loadStructure(xyz(xyzData)[0]);
     }
