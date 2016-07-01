@@ -233,7 +233,8 @@ var smiles = {
             chEmblAjax = function(path) {
                 return $.ajax({
                     url: apiRoot + path,
-                    dataType: 'text'
+                    dataType: 'text',
+                    type: 'POST'
                 });
             };
 
