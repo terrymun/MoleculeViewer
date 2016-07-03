@@ -14612,11 +14612,12 @@ var smiles = {
     getXyz: function(smile) {
         // Define variables for AJAX call
         var apiRoot = 'https://www.ebi.ac.uk/chembl/api/utils/',
-            chEmblAjax = function(path) {
+            chEmblAjax = function(path, type) {
+                if(typeof type === typeof undefined) type = 'GET';
                 return $.ajax({
                     url: apiRoot + path,
                     dataType: 'text',
-                    type: 'POST'
+                    type: type
                 });
             };
 
@@ -14628,7 +14629,7 @@ var smiles = {
         .then(function(ctab) {
             if(ctab) {
                 console.log('CTAB file:\n\n'+ctab);
-                return chEmblAjax('ctab2xyz/' + btoa(ctab))     // Convert CTAB to XYZ
+                return chEmblAjax('ctab2xyz/' + btoa(ctab), 'POST')     // Convert CTAB to XYZ
             } else {
                 return $.Deferred(function(d){
                     return d.reject('', 404, 'CTAB is empty, no data returned from API.');
